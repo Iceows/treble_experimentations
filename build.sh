@@ -26,7 +26,7 @@ elif [ "$1" == "android-10.0" ];then
     phh="android-10.0"
 elif [ "$1" == "android-11.0" ];then
     manifest_url="https://android.googlesource.com/platform/manifest"
-    aosp="android-11.0.0_r48"
+    aosp="android-11.0.0_r51"
     phh="android-11.0"
 elif [ "$1" == "android-12.0" ];then
     manifest_url="https://android.googlesource.com/platform/manifest"
@@ -69,7 +69,7 @@ fi
 repo sync -c -j 1 --force-sync || repo sync -c -j1 --force-sync
 
 repo forall -r '.*opengapps.*' -c 'git lfs fetch && git lfs checkout'
-(cd device/phh/treble; git clean -fdx; if [ -f phh.mk ];then bash generate.sh phh;else bash generate.sh;fi)
+(cd device/phh/treble; git clean -fdx; bash generate.sh)
 (cd vendor/foss; git clean -fdx; bash update.sh)
 rm -f vendor/gapps/interfaces/wifi_ext/Android.bp
 
@@ -85,7 +85,7 @@ buildVariant() {
 
 repo manifest -r > release/$rom_fp/manifest.xml
 bash "$originFolder"/list-patches.sh
-cp patches.zip release/$rom_fp/patches-for-developers.zip
+cp patches.zip release/$rom_fp/patches.zip
 
 if [ "$build_target" == "android-12.0" ];then
     (
