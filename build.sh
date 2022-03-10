@@ -26,11 +26,11 @@ elif [ "$1" == "android-10.0" ];then
     phh="android-10.0"
 elif [ "$1" == "android-11.0" ];then
     manifest_url="https://android.googlesource.com/platform/manifest"
-    aosp="android-11.0.0_r53"
+    aosp="android-11.0.0_r48"
     phh="android-11.0"
 elif [ "$1" == "android-12.0" ];then
     manifest_url="https://android.googlesource.com/platform/manifest"
-    aosp="android-12.0.0_r28"
+    aosp="android-12.0.0_r32"
     phh="android-12.0"
 elif [ "$1" == "android-12.1" ];then
     manifest_url="https://android.googlesource.com/platform/manifest"
